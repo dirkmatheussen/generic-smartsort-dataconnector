@@ -1,0 +1,20 @@
+package com.art4l.dataconnector.module.vt100.domain.dto.screenxml;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JacksonXmlRootElement(localName = "screens")
+public class Document {
+    @JacksonXmlProperty(localName = "screen")
+    @JacksonXmlElementWrapper(useWrapping = false)
+    private Screen[] screens;
+}

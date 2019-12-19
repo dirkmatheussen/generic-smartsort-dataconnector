@@ -1,0 +1,41 @@
+mqtt:
+  serverUri: "tcp://test.mosquitto.org:1883"
+  clientId: "dataconnector-mock-services"
+server:
+  port: 8082
+jwt:
+  secret: "SecretKeyToGenJWTs"
+spring:
+  activemq:
+    broker-url: tcp://localhost:61616
+    user: admin
+    password: admin
+  datasource:
+    url: jdbc:mysql://191.168.1.150:3306/Martur
+    driverClassName: com.mysql.cj.jdbc.Driver
+    username: dirk
+    password: Krid3312
+picklist-info:
+  folder: "dev_utils/example_picklist_info"
+db:
+  settings:
+    martur_ro:
+      url: jdbc:mysql://192.168.1.150:3306/Martur
+      username: dirk
+      password: Krid3312
+vt100:
+  settings:
+    hongkong:
+      host: "172.21.16.226"
+      properties:
+        jagacy.port: "8031"
+        terminal: "VT100"
+
+screen:
+  folder: "dev_utils/screens"
+backend:
+  folder: ""  
+  ftpurl: "35.195.135.150"
+  ftpport: "22"
+  ftpusername: "art4l"
+  ftppassword: "krid2912"
