@@ -11,7 +11,7 @@ spring:
     user: admin
     password: admin
   datasource:
-    url: jdbc:mysql://191.168.1.150:3306/Martur
+    url: jdbc:mysql://192.168.1.150:3306/Martur
     driverClassName: com.mysql.cj.jdbc.Driver
     username: dirk
     password: Krid3312
@@ -33,8 +33,17 @@ vt100:
 
 screen:
   folder: "dev_utils/screens"
+art4l:
+  tcp-server:
+    port: 20502
+    auto-start: true
 backend:
-  folder: ""  
+  sftp: false
+  folder: ""
+  #ftpurl: "localhost"
+  #ftpport: "21"
+  #ftpusername: "anonymous"
+  #ftppassword: "info@art4l"
   ftpurl: "35.195.135.150"
   ftpport: "22"
   ftpusername: "art4l"

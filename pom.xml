@@ -4,8 +4,8 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.art4l.dataconnector</groupId>
-	<artifactId>martur-kitting-dataconnector</artifactId>
-	<version>1.0.1-prod</version>
+	<artifactId>martur-generic-dataconnector</artifactId>
+	<version>1.0.4-prod</version>
 	<packaging>jar</packaging>
 
 	<name>dataconnector-service</name>

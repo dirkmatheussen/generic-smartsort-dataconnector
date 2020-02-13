@@ -19,4 +19,5 @@ public class BackendConfig {
     private String ftpport;
     private String ftpusername;
     private String ftppassword;
+    private boolean sftp;
 }

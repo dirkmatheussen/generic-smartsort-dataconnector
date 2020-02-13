@@ -9,6 +9,8 @@ import com.art4l.dataconnector.module.dataconnector.domain.event.CommandEventTyp
 import com.art4l.dataconnector.module.dataconnector.domain.event.CommandVariable;
 import com.art4l.dataconnector.module.dataconnector.domain.event.Subscriber;
 import com.art4l.license.LicenseValidator;
+import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 import com.jcraft.jsch.Channel;
 import com.jcraft.jsch.ChannelSftp;
 import com.jcraft.jsch.JSch;
@@ -41,6 +43,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.LinkedHashMap;
+import java.util.Optional;
 
 import javax.annotation.PostConstruct;
 
@@ -123,19 +126,36 @@ public class GetFileDataHandler extends AbstractFTPHandler {
 
 							// Get the data from the server
 							try {
-								List<LinkedHashMap<String, String>> backendData = getBackendData(pathName, fileName, ftpUsername, ftpPassword);
-								if (backendData != null) {
+								Optional<BufferedReader> dataStream = getFileData(pathName, fileName, ftpUsername, ftpPassword);
+								if (dataStream.isPresent()) {
+									switch (getType(dataStream.get())){
+										case "csv":
+											List<LinkedHashMap<String, String>> backendData = getBackendCSVData(dataStream.get());
+											if (backendData != null) {
 
-									response.setStatus(ResponseStatus.SUCCEEDED.getStatus());
-									response.getProcessVariables().put("backendData", backendData);
+												response.setStatus(ResponseStatus.SUCCEEDED.getStatus());
+												response.getProcessVariables().put("backendData", backendData);
 
-									log.info(COMMAND_TYPE + " success, datafile returned: ");
+												log.info(COMMAND_TYPE + " success, datafile returned: ");
+											} else {
+												response.setStatus(ResponseStatus.FAILED.getStatus());
+												// Add user error information to the response for user feedback
+												response.getProcessVariables().put("userError", "Data not found");
+											}
+											break;
+										case "json":
+										case "xml":
+											String backendRawData = dataStream.get().toString();
+												response.setStatus(ResponseStatus.SUCCEEDED.getStatus());
+												response.getProcessVariables().put("backendData", backendRawData);
+												log.info(COMMAND_TYPE + " success, XML or Json datafile returned: ");
+									}
 								} else {
 									response.setStatus(ResponseStatus.FAILED.getStatus());
 									// Add user error information to the response for user feedback
-									response.getProcessVariables().put("userError", "Order not found");
+									response.getProcessVariables().put("userError", "Data not found");
 								}
-								// Store command to execute later
+
 							} catch (Exception e) {
 								response.setStatus(ResponseStatus.FAILED.getStatus()); // TODO: add info to error so camunda knows this is an application error
 								// Add application error information to the response for user feedback
@@ -166,47 +186,75 @@ public class GetFileDataHandler extends AbstractFTPHandler {
                 });
     }
     
+	private Optional<BufferedReader> getFileData(String pathName, String fileName, String ftpUsername, String ftpPassword){
+		File backendFile ;
+		BufferedReader br = null;;
 
-    
-	 private List<LinkedHashMap<String,String>> getBackendData(String pathName, String fileName, String ftpUsername, String ftpPassword){
-		 	
-		 List<LinkedHashMap<String, String>> rows = new ArrayList<LinkedHashMap<String, String>>();
-		 
-		 LinkedHashMap<String, String> row;
-		
-		 File backendFile ; 
-		 BufferedReader br = null;;
-		 		
-		 String folder = mBackendConfig.getFolder();
-		 
-		 if (!folder.isEmpty()) {
-			 try {
-				 File dataFolder = new File(folder);			 	
-				 backendFile= new File(dataFolder,fileName);		
-				 br = new BufferedReader(new FileReader(backendFile));
-			 }catch (FileNotFoundException e) {
-				 
+		String folder = mBackendConfig.getFolder();
+
+		if (!folder.isEmpty()) {
+			try {
+				File dataFolder = new File(folder);
+				backendFile= new File(dataFolder,fileName);
+				br = new BufferedReader(new FileReader(backendFile));
+			}catch (FileNotFoundException e) {
+
 				e.printStackTrace();
-				 
-			 }
-		 } else {
-			 
-			 
-			 String ftpUrl = mBackendConfig.getFtpurl();
-			 String ftpPort = mBackendConfig.getFtpport();
+				return Optional.empty();
+			}
+		} else {
 
-		 	 try {
-				br = new BufferedReader(new InputStreamReader(getSFtpFile(ftpUrl,ftpPort,ftpUsername,ftpPassword,pathName, fileName), StandardCharsets.UTF_8));
+			String ftpUrl = mBackendConfig.getFtpurl();
+			String ftpPort = mBackendConfig.getFtpport();
+			boolean isSftp = mBackendConfig.isSftp();
+
+			try {
+				if (isSftp) {
+					br = new BufferedReader(new InputStreamReader(getSFtpFile(ftpUrl, ftpPort, ftpUsername, ftpPassword, pathName, fileName), StandardCharsets.UTF_8));
+				} else {
+					br = new BufferedReader(new InputStreamReader(getFtpFile(ftpUrl, ftpPort, ftpUsername, ftpPassword, pathName, fileName), StandardCharsets.UTF_8));
+				}
+
+				br.close();
+
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-				return null;
-			} 
-		 	 
-			 
-		 }
-		 
-		 		    	
+				return Optional.empty();
+			}
+
+		}
+
+		return Optional.of(br);
+
+	}
+
+
+    private String getType(BufferedReader br){
+ 		String returnType = "csv";
+ 		if (br.toString().startsWith("<?xml")) {returnType = "xml";}
+ 		else if (isJsonValid(br.toString())) {returnType= "json";}
+ 		return returnType;
+	}
+
+
+	private static boolean isJsonValid(String jsonString){
+ 		try{
+ 			new Gson().fromJson(jsonString,Object.class);
+		} catch (JsonSyntaxException ex){
+ 			return false;
+		}
+ 		return true;
+	}
+
+	 private List<LinkedHashMap<String,String>> getBackendCSVData(BufferedReader br){
+		 	
+		 List<LinkedHashMap<String, String>> rows = new ArrayList<LinkedHashMap<String, String>>();
+
+		 LinkedHashMap<String, String> row;
+
+		 File backendFile ;
+
 		 try {
 		 	    String line = br.readLine();
 	 	    	line = line.replace("\"","");			//remove all quotes

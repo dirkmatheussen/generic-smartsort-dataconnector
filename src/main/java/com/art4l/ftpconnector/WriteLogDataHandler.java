@@ -12,6 +12,10 @@ import com.art4l.dataconnector.module.db.domain.LogData;
 import com.art4l.license.LicenseValidator;
 import com.jcraft.jsch.*;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.net.PrintCommandListener;
+import org.apache.commons.net.ftp.FTP;
+import org.apache.commons.net.ftp.FTPClient;
+import org.apache.commons.net.ftp.FTPReply;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +24,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
@@ -75,7 +80,8 @@ public class WriteLogDataHandler extends AbstractFTPHandler {
 
 						// Get command variables
 						final String fileName = (String) commandEvent.getProcessVariables().get("filename");
-						final String pathName = (String) commandEvent.getProcessVariables().get("pathname");
+//						final String pathName = (String) commandEvent.getProcessVariables().get("pathname");
+						final String pathName = "log";		//TODO hardcoded
 						final String ftpUsername = (String) commandEvent.getProcessVariables().get("username");
 						final String ftpPassword = (String) commandEvent.getProcessVariables().get("password");
 						final List<LinkedHashMap<String, String>> logDataArrayList = (List<LinkedHashMap<String, String>>) commandEvent.getProcessVariables().get("logdata");
@@ -143,8 +149,11 @@ public class WriteLogDataHandler extends AbstractFTPHandler {
 
 		 	String ftpUrl = mBackendConfig.getFtpurl();
 		 	String ftpPort = mBackendConfig.getFtpport();
+			 boolean isSFtp = mBackendConfig.isSftp();
+			 if (isSFtp) return putSFtpFile(ftpUrl, ftpPort, ftpUsername, ftpPassword, pathName, fileName, csvStream.toString());
+			 return  putFtpFile(ftpUrl, ftpPort, ftpUsername, ftpPassword, pathName, fileName, csvStream.toString());
 
-		 	return putSFtpFile(ftpUrl, ftpPort, ftpUsername, ftpPassword, pathName, fileName, csvStream.toString());
+
 
 		 } catch(IOException ex){
 
@@ -160,6 +169,43 @@ public class WriteLogDataHandler extends AbstractFTPHandler {
 		}
 		return StringUtils.join(values, ";");
 	}
+
+	private boolean putFtpFile(String url, String port, String username, String password, String pathName, String fileName,String csvStream ) throws IOException{
+
+		FTPClient ftp;
+		int iPort = Integer.valueOf(port);
+
+		ftp = new FTPClient();
+
+		ftp.addProtocolCommandListener(new PrintCommandListener(new PrintWriter(System.out)));
+
+		ftp.connect(url, iPort);
+		int reply = ftp.getReplyCode();
+		if (!FTPReply.isPositiveCompletion(reply)) {
+			ftp.disconnect();
+			throw new IOException("Exception in connecting to FTP Server");
+		}
+		ftp.enterLocalPassiveMode();
+
+		ftp.login(username, password);
+		ftp.setFileType(FTP.BINARY_FILE_TYPE);
+
+
+		ftp.changeWorkingDirectory(pathName);
+
+		ByteArrayInputStream inputStream = new ByteArrayInputStream(csvStream.getBytes(StandardCharsets.UTF_8));
+
+		boolean success = ftp.storeUniqueFile(fileName,inputStream);
+		if (success) {
+			System.out.println("File "+ fileName +" has been uploaded successfully.");
+		}
+		inputStream.close();
+		ftp.disconnect();
+
+		return success;
+
+	}
+
 
 
 	private boolean putSFtpFile(String url, String port, String username, String password, String pathName, String fileName,String csvStream ) throws IOException{

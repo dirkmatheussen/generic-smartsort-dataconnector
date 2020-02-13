@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<screens>
+
+    <!-- scn.org Login Screen -->
+    <screen>
+        <name>scn.org login</name> <!-- This should be unique, to check for expected screens easily -->
+
+        <!-- List of identifiers used to detect this screen -->
+        <screenidentifiers>
+            <screenidentifier>
+                <value>login</value>
+                <row>7</row>
+                <!--<row>8</row> &lt;!&ndash; offset for debugging more dynamic screen detection &ndash;&gt;-->
+                <col>0</col>
+            </screenidentifier>
+        </screenidentifiers>
+
+        <!-- List of possible errors, each error has identifiers to detect them -->
+        <errors>
+            <error>
+                <screenidentifiers>
+                    <screenidentifier>
+                        <value>Password</value>
+                        <row>8</row>
+                        <col>0</col>
+                    </screenidentifier>
+                </screenidentifiers>
+                <value>Username is wrong</value>
+            </error>
+        </errors>
+
+        <!-- List of the available fields on this screen -->
+        <fields>
+            <field>
+                <name>login</name>
+                <label>
+                    <value>login</value>
+                </label>
+
+                <!-- The input this field expects, with its position, the need for confirmation and options? -->
+                <input>
+                    <valuetype>string</valuetype>
+                    <row>7</row>
+                    <col>0</col>
+                    <optionlist></optionlist>
+                    <confirmation>true</confirmation>
+                </input>
+
+            </field>
+        </fields>
+
+        <!--<fields>-->
+            <!--<field>-->
+                <!--<name>Login 2</name>-->
+                <!--<label>-->
+                    <!--<value>Login as visitor</value>-->
+                <!--</label>-->
+
+                <!--&lt;!&ndash; The input this field expects, with its position, the need for confirmation and options? &ndash;&gt;-->
+                <!--<input>-->
+                    <!--<valuetype>string</valuetype>-->
+                    <!--<row>7</row>-->
+                    <!--<col>7</col>-->
+                    <!--<optionlist>Visitor;Login 2;Login 3;Login 4</optionlist>-->
+                    <!--<confirmation>true</confirmation>-->
+                <!--</input>-->
+
+            <!--</field>-->
+        <!--</fields>-->
+
+        <!-- List of navigation keys for this screen -->
+        <navigationkeys>
+            <key>ENTER</key>
+        </navigationkeys>
+
+        <icon>fill</icon>
+    </screen>
+
+    <screen>
+    	<name>Welcome</name>
+        <screenidentifiers>
+            <screenidentifier>
+                <value>The SCN Connection</value>
+                <row>15</row>
+                <col>0</col>
+            </screenidentifier>
+        </screenidentifiers>
+        <errors>
+            <error>
+                <row>15</row>
+                <col>0</col>
+                <blocking>true</blocking>
+            </error>
+        </errors>
+        <interactions>
+            <interaction>
+                <label>Continue</label>
+                <keys>
+                    <key>ENTER</key>
+                </keys>
+                <keycode>next</keycode>
+            </interaction>
+        </interactions>
+    </screen>
+    <screen>
+        <screenidentifiers>
+            <screenidentifier>
+                <value>End of File</value>
+                <row>3</row>
+                <col>0</col>
+            </screenidentifier>
+        </screenidentifiers>
+        <navigationkeys>
+            <key>ENTER</key>
+        </navigationkeys>
+    </screen>
+    <screen>
+        <screenidentifiers>
+            <screenidentifier>
+                <value>Press RETURN</value>
+                <row>2</row>
+                <col>0</col>
+            </screenidentifier>
+        </screenidentifiers>
+        <navigationkeys>
+            <key>ENTER</key>
+        </navigationkeys>
+    </screen>
+    <screen>
+        <screenidentifiers>
+            <screenidentifier>
+                <value>Press RETURN</value>
+                <row>23</row>
+                <col>0</col>
+            </screenidentifier>
+        </screenidentifiers>
+        <navigationkeys>
+            <key>ENTER</key>
+        </navigationkeys>
+    </screen>
+    <screen>
+        <screenidentifiers>
+            <screenidentifier>
+                <value>Press RETURN</value>
+                <row>1</row>
+                <col>0</col>
+            </screenidentifier>
+        </screenidentifiers>
+        <navigationkeys>
+            <key>ENTER</key>
+        </navigationkeys>
+    </screen>
+    <screen>
+        <name>Main menu</name>
+        <screenidentifiers>
+            <screenidentifier>
+                <value>1 Visitor</value>
+                <row>3</row>
+                <col>2</col>
+            </screenidentifier>
+        </screenidentifiers>
+        <text>
+            <value>Main menu!</value>
+        </text>
+        <interactions>
+            <interaction>
+                <label>Show help</label>
+                <keys>
+                    <key>h</key>
+                    <key>ENTER</key>
+                </keys>
+                <keycode>next</keycode>
+            </interaction>
+        </interactions>
+        <icon>final</icon>
+    </screen>
+    <screen>
+        <name>Help</name>
+        <screenidentifiers>
+            <screenidentifier>
+                <value>Would you like more information?</value>
+                <row>18</row>
+                <col>0</col>
+            </screenidentifier>
+        </screenidentifiers>
+        <text>
+            <value>We are in the help menu</value>
+        </text>
+        <interactions>
+            <interaction>
+                <label>Main menu</label>
+                <keys>
+                    <key>n</key>
+                    <key>ENTER</key>
+                </keys>
+                <keycode>back</keycode>
+            </interaction>
+        </interactions>
+    </screen>
+</screens>

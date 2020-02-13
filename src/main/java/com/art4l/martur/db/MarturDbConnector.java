@@ -9,8 +9,6 @@ import com.art4l.dataconnector.module.vt100.domain.exception.UserException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BatchPreparedStatementSetter;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
@@ -107,6 +105,7 @@ public class MarturDbConnector {
             }
 
             SqlParameterSource namedParameters = new MapSqlParameterSource().addValue("layoutName", kittingArea);
+
 
             List<KittingLayout> kittingLayouts = jdbcTemplate.query("SELECT * FROM Martur.KITTINGLAYOUT WHERE LAYOUTNAME = :layoutName", namedParameters,new KittingLayoutRowMapper());
             if (kittingLayouts.size() != 1) return Optional.empty();

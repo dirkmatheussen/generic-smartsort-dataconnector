@@ -173,8 +173,9 @@ public class PutFileDataHandler extends AbstractFTPHandler {
 
 				String ftpUrl = mBackendConfig.getFtpurl();
 				String ftpPort = mBackendConfig.getFtpport();
-
-				return putSFtpFile(ftpUrl, ftpPort, ftpUsername, ftpPassword, pathName, fileName, csvStream.toString());
+				boolean isSFtp = mBackendConfig.isSftp();
+				if (isSFtp) return putSFtpFile(ftpUrl, ftpPort, ftpUsername, ftpPassword, pathName, fileName, csvStream.toString());
+				return  putFtpFile(ftpUrl, ftpPort, ftpUsername, ftpPassword, pathName, fileName, csvStream.toString());
 
 			} catch(IOException ex){
 
@@ -192,6 +193,43 @@ public class PutFileDataHandler extends AbstractFTPHandler {
 			values.add(csvList.get(key) == null ? " " : csvList.get(key));
 		}
 		return StringUtils.join(values, ";");
+	}
+
+	private boolean putFtpFile(String url, String port, String username, String password, String pathName, String fileName,String csvStream ) throws IOException{
+
+		FTPClient ftp;
+		int iPort = Integer.valueOf(port);
+
+		ftp = new FTPClient();
+
+		ftp.addProtocolCommandListener(new PrintCommandListener(new PrintWriter(System.out)));
+
+		ftp.connect(url, iPort);
+		int reply = ftp.getReplyCode();
+		if (!FTPReply.isPositiveCompletion(reply)) {
+			ftp.disconnect();
+			throw new IOException("Exception in connecting to FTP Server");
+		}
+		ftp.enterLocalPassiveMode();
+
+		ftp.login(username, password);
+		ftp.setFileType(FTP.BINARY_FILE_TYPE);
+
+//		fileName = pathName + fileName;
+		ftp.changeWorkingDirectory(pathName);
+
+		ByteArrayInputStream inputStream = new ByteArrayInputStream(csvStream.getBytes(StandardCharsets.UTF_8));
+
+//	        fileName = pathName + fileName;
+		boolean success = ftp.storeUniqueFile(fileName,inputStream);
+		if (success) {
+			System.out.println("File "+ fileName +" has been uploaded successfully.");
+		}
+		inputStream.close();
+		ftp.disconnect();
+
+		return success;
+
 	}
 
 
@@ -279,7 +317,6 @@ public class PutFileDataHandler extends AbstractFTPHandler {
 	        }
 	    }
 
-		 
 }
 
 

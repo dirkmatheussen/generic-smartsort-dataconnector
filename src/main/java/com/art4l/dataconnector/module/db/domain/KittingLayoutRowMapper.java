@@ -14,7 +14,7 @@ public class KittingLayoutRowMapper implements RowMapper<KittingLayout> {
         kittingLayout.setLayoutName(rs.getString("LAYOUTNAME"));
         kittingLayout.setCols(rs.getInt("COLS"));
         kittingLayout.setRows(rs.getInt("ROWS"));
-        kittingLayout.setStartARNr(rs.getInt("STARTARNR"));
+        kittingLayout.setStartArPosition(rs.getInt("STARTARPOSITION"));
         kittingLayout.setLeft2right(rs.getBoolean("LEFT2RIGHT"));
 
         return kittingLayout;

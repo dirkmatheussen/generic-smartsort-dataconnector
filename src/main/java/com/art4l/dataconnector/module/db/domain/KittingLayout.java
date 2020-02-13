@@ -11,7 +11,7 @@ public class KittingLayout {
     private int id;
     private int cols;
     private int rows;
-    private int startARNr;
+    private int startArPosition;
     private boolean left2right;
 
     public KittingLayout() {

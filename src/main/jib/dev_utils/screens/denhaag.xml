@@ -1,0 +1,959 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<screens>
+    <screen>
+        <name>login</name>
+        <screenidentifiers>
+            <screenidentifier>
+                <value>login</value>
+                <row>2</row>
+                <col>0</col>
+            </screenidentifier>
+        </screenidentifiers>
+        <errors>
+            <error>
+                <screenidentifiers>
+                    <screenidentifier>
+                        <value>Login incorrect</value>
+                    </screenidentifier>
+                </screenidentifiers>
+                <value>
+                    Login incorrect
+                </value>
+            </error>
+        </errors>
+        <fields>
+            <field>
+                <name>login</name>
+                <label>
+                    <value>login:</value>
+                </label>
+                <navigationkeys>
+                    <submit>ENTER</submit>
+                    <cancel>/</cancel>
+                </navigationkeys>
+            </field>
+            <field>
+                <name>password</name>
+                <label>
+                    <value>Password:</value>
+                </label>
+                <navigationkeys>
+                    <submit>ENTER</submit>
+                    <cancel>/</cancel>
+                </navigationkeys>
+            </field>
+            <field>
+                <name>translation</name>
+                <label>
+                    <value>Translation in terminal emulatie Latin1, kies 1, UTF8 kies 8 </value>
+                </label>
+                <input>
+                    <value>1</value>
+                </input>
+                <navigationkeys>
+                    <submit>ENTER</submit>
+                    <cancel>/</cancel>
+                </navigationkeys>
+            </field>
+        </fields>
+        <timeout>20000</timeout>
+    </screen>
+
+    <screen>
+    	<name>UNAS fase</name>
+        <screenidentifiers>
+            <screenidentifier>
+                <value>+ Which UNAS fase should be activated? +</value>
+                <row>3</row>
+                <col>0</col>
+            </screenidentifier>
+        </screenidentifiers>
+        <fields>
+            <field>
+                <name>UNAS fase</name>
+                <label>
+                    <value>keuze: </value>
+                </label>
+                <input>
+                    <value>3a</value>
+                </input>
+                <navigationkeys>
+                    <submit>ENTER</submit>
+                    <cancel>/</cancel>
+                </navigationkeys>
+            </field>
+        </fields>
+    </screen>
+
+    <screen>
+        <name>Tool selection</name>
+        <screenidentifiers>
+            <screenidentifier>
+                <value> 2 backup:</value>
+                <row>5</row>
+                <col>0</col>
+            </screenidentifier>
+            <screenidentifier>
+                <value> 3 restore:</value>
+                <row>6</row>
+                <col>0</col>
+            </screenidentifier>
+            <screenidentifier>
+                <value> 4 remove:</value>
+                <row>7</row>
+                <col>0</col>
+            </screenidentifier>
+        </screenidentifiers>
+        <fields>
+            <field>
+                <name>Tool selection</name>
+                <label>
+                    <value>Keuze : </value>
+                </label>
+                <input>
+                    <value>1b</value>
+                </input>
+                <navigationkeys>
+                    <submit>ENTER</submit>
+                    <cancel>/</cancel>
+                </navigationkeys>
+            </field>
+        </fields>
+    </screen>
+
+    <screen>
+        <name>Hoofdmenu TNT Handelsadministratie</name>
+        <screenidentifiers>
+            <screenidentifier>
+                <value>Hoofdmenu TNT Handelsadministratie</value>
+            </screenidentifier>
+        </screenidentifiers>
+        <fields>
+            <field>
+                <name>Tool selection</name>
+                <label>
+                    <value>Uw keuze: </value>
+                </label>
+                <input>
+                    <value>cp0476</value>
+                </input>
+                <navigationkeys>
+                    <submit>ENTER</submit>
+                    <cancel>/</cancel>
+                </navigationkeys>
+            </field>
+        </fields>
+    </screen>
+       <screen>
+        <name>Pickmenu</name>
+        <screenidentifiers>
+            <screenidentifier>
+                <value>ob501/Pickmenu</value>
+            </screenidentifier>
+        </screenidentifiers>
+        <fields>
+            <field>
+                <name>Tool selection</name>
+                <label>
+                    <value>Uw keuze: </value>
+                </label>
+                <input>
+                    <value>cp0476</value>
+                </input>
+                <navigationkeys>
+                    <submit>ENTER</submit>
+                    <cancel>/</cancel>
+                </navigationkeys>
+            </field>
+        </fields>
+    </screen>
+
+    <screen>
+        <name>Menu</name>
+        <screenidentifiers>
+            <screenidentifier>
+                <value>UOB picker</value>
+                <value>KCC picker</value>
+                <value>DTV picker</value>
+            </screenidentifier>
+        </screenidentifiers>
+        <fields>
+            <field>
+                <name>Tool selection</name>
+                <label>
+                    <value>Uw keuze: </value>
+                </label>
+                <input>
+                    <value>14</value>
+                </input>
+                <navigationkeys>
+                    <submit>ENTER</submit>
+                    <cancel>/</cancel>
+                </navigationkeys>
+            </field>
+        </fields>
+    </screen>
+
+    <screen>
+        <name>employee number</name>
+        <screenidentifiers>
+            <screenidentifier>
+                <value>uw medewerkernummer</value>
+            </screenidentifier>
+        </screenidentifiers>
+        <fields>
+            <field>
+                <name>employee number</name>
+                <label>
+                    <value>Medewerker:</value>
+                </label>
+                <navigationkeys>
+                    <submit>ENTER</submit>
+                    <cancel>/</cancel>
+                </navigationkeys>
+            </field>
+        </fields>
+    </screen>
+
+    <screen>
+        <name>employee number password</name>
+        <screenidentifiers>
+            <screenidentifier>
+                <value>Password:</value>
+            </screenidentifier>
+        </screenidentifiers>
+        <fields>
+            <field>
+                <name>password</name>
+                <label>
+                    <value>Password:</value>
+                </label>
+                <navigationkeys>
+                    <submit>ENTER</submit>
+                    <cancel>/</cancel>
+                </navigationkeys>
+            </field>
+        </fields>
+    </screen>
+
+    <screen>
+        <name>employee number akkoord</name>
+        <screenidentifiers>
+            <screenidentifier>
+                <value>Gaat u akkoord?:</value>
+            </screenidentifier>
+        </screenidentifiers>
+        <fields>
+            <field>
+                <name>employee confirmation</name>
+                <label>
+                    <value>Gaat u akkoord?: </value>
+                </label>
+                <input>
+                    <value>J</value>
+                </input>
+                <navigationkeys>
+                    <submit>ENTER</submit>
+                    <cancel>/</cancel>
+                </navigationkeys>
+            </field>
+        </fields>
+    </screen>
+
+    <screen>
+        <name>employee number password test</name>
+        <screenidentifiers>
+            <screenidentifier>
+                <value>Input/Wijzig paswd:</value>
+            </screenidentifier>
+        </screenidentifiers>
+        <fields>
+            <field>
+                <name>select input</name>
+                <label>
+                    <value>Input/Wijzig paswd:</value>
+                </label>
+                <input>
+                    <value>I</value>
+                </input>
+                <navigationkeys>
+                    <submit>ENTER</submit>
+                    <cancel>/</cancel>
+                </navigationkeys>
+            </field>
+            <field>
+                <name>password</name>
+                <label>
+                    <value>Password:</value>
+                </label>
+                <navigationkeys>
+                    <submit>ENTER</submit>
+                    <cancel>/</cancel>
+                </navigationkeys>
+            </field>
+        </fields>
+    </screen>
+
+    <screen>
+        <name>employee change password</name>
+        <screenidentifiers>
+            <screenidentifier>
+                <value>Wijzig Uw Paswoord</value>
+            </screenidentifier>
+        </screenidentifiers>
+        <fields>
+            <field>
+                <name>huidig paswoord</name>
+                <label>
+                    <value>Paswoord:</value>
+                </label>
+                <navigationkeys>
+                    <submit>ENTER</submit>
+                    <cancel>/</cancel>
+                </navigationkeys>
+            </field>
+            <field>
+                <name>huidig paswoord</name>
+                <label>
+                    <value>.......</value>
+                </label>
+                <navigationkeys>
+                    <submit>ENTER</submit>
+                    <cancel>/</cancel>
+                </navigationkeys>
+            </field>
+        </fields>
+    </screen>
+
+    <screen>
+        <name>pickrungroep selection</name>
+        <screenidentifiers>
+            <screenidentifier>
+                <value>selecteer pickrungroep</value>
+            </screenidentifier>
+        </screenidentifiers>
+        <fields>
+            <field>
+                <name>pickrungroep selection</name>
+                <label>
+                    <value>[Selecteer]</value>
+                </label>
+                <navigationkeys>
+                    <submit>ENTER</submit>
+                    <cancel>/</cancel>
+                </navigationkeys>
+            </field>
+        </fields>
+    </screen>
+    <screen>
+        <name>start pickrun</name>
+        <screenidentifiers>
+            <screenidentifier>
+                <value>Start pickrun</value>
+            </screenidentifier>
+        </screenidentifiers>
+        <fields>
+            <field>
+                <name>start pickrun</name>
+                <label>
+                    <value>Start pickrun</value>
+                </label>
+                <navigationkeys>
+                    <submit>ENTER</submit>
+                    <cancel>N</cancel>
+                </navigationkeys>
+            </field>
+        </fields>
+        <outputParameters>
+            <outputParameter>
+                <key>picklist</key>
+                <regex>Runnr\.:[ \t]+([a-zA-Z0-9_]*)</regex>
+            </outputParameter>
+            <outputParameter>
+                <key>nrOfItems</key>
+                <regex>#Items:[ \t]+([a-zA-Z0-9_]*)</regex>
+            </outputParameter>
+            <outputParameter>
+                <key>volume</key>
+                <regex>Volume:[ \t]+([a-zA-Z0-9_]*,[a-zA-Z0-9_]*)</regex>
+            </outputParameter>
+            <outputParameter>
+                <key>boekstukken</key>
+                <regex>#Bkst :[ \t]+([a-zA-Z0-9_]*)</regex>
+            </outputParameter>
+        </outputParameters>
+    </screen>
+    <screen>
+        <name>vrijgeven pickrun</name>
+        <screenidentifiers>
+            <screenidentifier>
+                <value>4=Afbreken, vrijgeven</value>
+            </screenidentifier>
+        </screenidentifiers>
+        <fields>
+            <field>
+                <name>vrijgeven pickrun</name>
+                <label>
+                    <value>Keuze :</value>
+                </label>
+                <navigationkeys>
+                    <submit>ENTER</submit>
+                    <cancel>4</cancel>
+                </navigationkeys>
+            </field>
+        </fields>
+    </screen>
+    <screen>
+        <name>pickrun afmaken</name>
+        <screenidentifiers>
+            <screenidentifier>
+                <value>Pickrun afmaken?</value>
+            </screenidentifier>
+        </screenidentifiers>
+        <fields>
+            <field>
+                <name>pickrun afmaken</name>
+                <label>
+                    <value>Pickrun afmaken?</value>
+                </label>
+                <input>
+                    <value>J</value>
+                </input>
+                <navigationkeys>
+                    <submit>ENTER</submit>
+                    <cancel>N</cancel>
+                </navigationkeys>
+            </field>
+        </fields>
+    </screen>
+    <screen>
+        <name>pickline</name>
+        <screenidentifiers>
+            <screenidentifier>
+                <value>Loc.:</value>
+                <value>A:</value>
+                <value>Aant:</value>
+            </screenidentifier>
+        </screenidentifiers>
+        <fields>
+            <field>
+                <name>location confirmation</name>
+                <label>
+                    <value> ....... </value>
+                </label>
+                <navigationkeys>
+                    <submit>ENTER</submit>
+                    <cancel>/</cancel>
+                </navigationkeys>
+            </field>
+            <field>
+                <name>quantity confirmation</name>
+                <label>
+                    <value> ...... </value>
+                </label>
+                <navigationkeys>
+                    <submit>ENTER</submit>
+                    <cancel>0</cancel>
+                </navigationkeys>
+            </field>
+            <field>
+                <name>container</name>
+                <label>
+                    <value> ............... </value>
+                </label>
+                <navigationkeys>
+                    <submit>ENTER</submit>
+                    <cancel>/</cancel>
+                </navigationkeys>
+            </field>
+            <field>
+                <name>probleem</name>
+                <label>
+                    <value>Probleem:</value>
+                </label>
+                <input>
+                    <value>VCNP</value>
+                </input>
+                <navigationkeys>
+                    <submit>ENTER</submit>
+                    <cancel>/</cancel>
+                </navigationkeys>
+            </field>
+            <field>
+                <name>akkoord</name>
+                <label>
+                    <value>Akkoord?</value>
+                </label>
+                <input>
+                    <value>J</value>
+                </input>
+                <navigationkeys>
+                    <submit>ENTER</submit>
+                    <cancel>/</cancel>
+                </navigationkeys>
+            </field>
+            <field>
+                <name>Pickrun ready</name>
+                <label>
+                    <value>Pickrun uitgevoerd</value>
+                </label>
+                <input>
+                    <value>J</value>
+                </input>
+                <navigationkeys>
+                    <submit>ENTER</submit>
+                    <cancel>/</cancel>
+                </navigationkeys>
+            </field>
+            <field>
+                <name>Verkeerde doos</name>
+                <label>
+                    <value>Verkeerde doos</value>
+                </label>
+                <navigationkeys>
+                    <submit>ENTER</submit>
+                    <cancel>/</cancel>
+                </navigationkeys>
+            </field>
+            <field>
+                <name>ID is van ander ru</name>
+                <label>
+                    <value>ID is van ander ru</value>
+                </label>
+                <navigationkeys>
+                    <submit>ENTER</submit>
+                    <cancel>/</cancel>
+                </navigationkeys>
+            </field>
+        </fields>
+        <outputParameters>
+            <outputParameter>
+                <key>location</key>
+                <regex>Loc.:[ \t]*([a-zA-Z0-9_]*[ \t]*[a-zA-Z0-9_]*[ \t]*[a-zA-Z0-9_-]*)</regex>
+            </outputParameter>
+            <outputParameter>
+                <key>sku</key>
+                <regex>A:[ \t]*([a-zA-Z0-9_]*)</regex>
+            </outputParameter>
+            <outputParameter>
+                <key>quantity</key>
+                <regex>A:[ \t]*[a-zA-Z0-9_]*[ \t]+([Z0-9_]+)</regex>
+            </outputParameter>
+            <outputParameter>
+                <key>quantity</key>
+                <regex>Aant:[ \t]*[a-zA-Z0-9_]*[ \t]+([Z0-9_]+)</regex>
+            </outputParameter>
+            <outputParameter>
+                <key>container</key>
+                <regex>Drager:[ \t]*([a-zA-Z0-9_]*[ \t]*[a-zA-Z0-9_]+)</regex>
+            </outputParameter>
+        </outputParameters>
+    </screen>
+    <screen>
+        <name>record locked</name>
+        <screenidentifiers>
+            <screenidentifier>
+                <value>Record van bestand is gelockt...  Ogenblikje aub</value>
+            </screenidentifier>
+        </screenidentifiers>
+    </screen>
+    <screen>
+        <name>aanvulling nodig</name>
+        <screenidentifiers>
+            <screenidentifier>
+                <value>AANVULLING NODIG</value>
+            </screenidentifier>
+        </screenidentifiers>
+        <fields>
+            <field>
+                <name>aanvulling nodig</name>
+                <label>
+                    <value>AANVULLING NODIG</value>
+                </label>
+                <navigationkeys>
+                    <submit>ENTER</submit>
+                    <cancel>/</cancel>
+                </navigationkeys>
+            </field>
+        </fields>
+    </screen>
+        <screen>
+        <name>geen pickruns</name>
+        <screenidentifiers>
+            <screenidentifier>
+                <value>Geen pickruns</value>
+            </screenidentifier>
+        </screenidentifiers>
+        <fields>
+            <field>
+                <name>geen pickruns</name>
+                <label>
+                    <value>Geen pickruns</value>
+                </label>
+                <navigationkeys>
+                    <submit>ENTER</submit>
+                    <cancel>/</cancel>                    
+                </navigationkeys>
+            </field>
+        </fields>
+    </screen>  
+    <screen>
+        <name>wrong location</name>
+        <screenidentifiers>
+            <screenidentifier>
+                <value>verkeerde locatie</value>
+            </screenidentifier>
+        </screenidentifiers>
+        <fields>
+            <field>
+                <name>wrong location</name>
+                <label>
+                    <value>verkeerde locatie</value>
+                </label>
+                <navigationkeys>
+                    <submit>ENTER</submit>
+                    <cancel>/</cancel>
+                </navigationkeys>
+            </field>
+        </fields>
+    </screen>
+    <screen>
+        <name>onjuiste locatie</name>
+        <screenidentifiers>
+            <screenidentifier>
+                <value>onjuiste locatie</value>
+            </screenidentifier>
+        </screenidentifiers>
+        <fields>
+            <field>
+                <name>wrong location</name>
+                <label>
+                    <value>onjuiste locatie</value>
+                </label>
+                <input>
+                    <value>J</value>
+                </input>
+                <navigationkeys>
+                    <submit>ENTER</submit>
+                    <cancel>/</cancel>
+                </navigationkeys>
+            </field>
+        </fields>
+    </screen>
+    <screen>
+        <name>login in use</name>
+        <screenidentifiers>
+            <screenidentifier>
+                <value>this login is in use from a different location than this location</value>
+            </screenidentifier>
+        </screenidentifiers>
+        <fields>
+            <field>
+                <name>login in use</name>
+                <label>
+                    <value>enter</value>
+                </label>
+                <input>
+                    <value>J</value>
+                </input>
+                <navigationkeys>
+                    <submit>ENTER</submit>
+                    <cancel>/</cancel>
+                </navigationkeys>
+            </field>
+        </fields>
+    </screen>
+        <screen>
+        <name>no packtable</name>
+        <screenidentifiers>
+            <screenidentifier>
+                <value>Paktafel niet voor</value>
+            </screenidentifier>
+        </screenidentifiers>
+        <fields>
+            <field>
+                <name>no packtable</name>
+                <label>
+                    <value>Paktafel niet voor</value>
+                </label>
+                <navigationkeys>
+                    <submit>ENTER</submit>
+                    <cancel>/</cancel>                    
+                </navigationkeys>
+            </field>
+        </fields>
+    </screen>      
+    <screen>
+        <name>scan packtable</name>
+        <screenidentifiers>
+            <screenidentifier>
+                <value>Scan paktafel</value>
+            </screenidentifier>
+        </screenidentifiers>
+        <fields>
+            <field>
+                <name>scan packtable</name>
+                <label>
+                    <value></value>
+                </label>
+                <navigationkeys>
+                    <submit>ENTER</submit>
+                    <cancel>pakg01</cancel>
+                </navigationkeys>
+            </field>
+        </fields>
+        <outputParameters>
+            <outputParameter>
+                <key>type</key>
+                <regex>type:[ \t]*([a-zA-Z0-9_*]*[ \t]*[a-zA-Z0-9_]*[ \t]*[a-zA-Z0-9_-]*)</regex>
+            </outputParameter>
+            <outputParameter>
+                <key>Regio</key>
+                <regex>Regio:[ \t]*([a-zA-Z0-9_*])</regex>
+            </outputParameter>
+        </outputParameters>
+        <timeout>2000</timeout>
+    </screen>
+    
+    <screen>
+        <name>go to buffer</name>
+        <screenidentifiers>
+            <screenidentifier>
+                <value>PAK TROL</value>
+            </screenidentifier>
+        </screenidentifiers>
+        <fields>
+            <field>
+                <name>trolley number</name>
+                <label>
+                    <value>....</value>
+                </label>
+                <navigationkeys>
+                    <submit>ENTER</submit>
+                    <cancel>/</cancel>
+                </navigationkeys>
+            </field>
+        </fields>
+        <outputParameters>
+            <outputParameter>
+                <key>buffer</key>
+                <regex>BUF.ER:[ \t]*([a-zA-Z0-9]*)</regex>
+            </outputParameter>
+            <outputParameter>
+                <key>trolley</key>
+                <regex>BUF.ER:[ \t]*[a-zA-Z0-9]*[ \t\│\r\n]*([a-zA-Z0-9]*)</regex>
+            </outputParameter>
+        </outputParameters>
+    </screen>
+
+    <screen>
+        <name>scan buffer location</name>
+        <screenidentifiers>
+            <screenidentifier>
+                <value>Scan buffer-locatie</value>
+            </screenidentifier>
+        </screenidentifiers>
+        <fields>
+            <field>
+                <name>location</name>
+                <label>
+                    <value>Locatie:</value>
+                </label>
+                <navigationkeys>
+                    <submit>ENTER</submit>
+                    <cancel>bufg01</cancel>
+                </navigationkeys>
+            </field>
+        </fields>
+    </screen>
+
+    <screen>
+        <name>trolley not empty</name>
+        <screenidentifiers>
+            <screenidentifier>
+                <value>Trolley is not emp</value>
+            </screenidentifier>
+        </screenidentifiers>
+        <fields>
+            <field>
+                <name>Not empty</name>
+                <label>
+                    <value>Trolley is not emp</value>
+                </label>
+                <navigationkeys>
+                    <submit>ENTER</submit>
+                    <cancel>/</cancel>
+                </navigationkeys>
+            </field>
+        </fields>
+    </screen>
+    <screen>
+        <name>Programma afbreken</name>
+        <screenidentifiers>
+            <screenidentifier>
+                <value>Programma afbreken</value>
+            </screenidentifier>
+        </screenidentifiers>
+        <fields>
+            <field>
+                <name>Programma afbreken</name>
+                <label>
+                    <value>Programma afbreken</value>
+                </label>
+                <input>
+                    <value>J</value>
+                </input>
+                <navigationkeys>
+                    <submit>ENTER</submit>
+                    <cancel>J</cancel>
+                </navigationkeys>
+            </field>
+        </fields>
+    </screen>
+    <screen>
+        <name>Programma verlaten</name>
+        <screenidentifiers>
+            <screenidentifier>
+                <value>Programma verlaten?</value>
+            </screenidentifier>
+        </screenidentifiers>
+        <fields>
+            <field>
+                <name>Programma verlaten?</name>
+                <label>
+                    <value></value>
+                </label>
+                <input>
+                    <value>J</value>
+                </input>
+                <navigationkeys>
+                    <submit>ENTER</submit>
+                    <cancel>J</cancel>
+                </navigationkeys>
+            </field>
+        </fields>
+    </screen>
+    <screen>
+        <name>Programma afgebroken</name>
+        <screenidentifiers>
+            <screenidentifier>
+                <value>Programma afgebroken</value>
+            </screenidentifier>
+        </screenidentifiers>
+        <fields>
+            <field>
+                <name>Programma afgebroken</name>
+                <label>
+                    <value>Programma afgebroken</value>
+                </label>
+                <input>
+                    <value>unas</value>
+                </input>
+                <navigationkeys>
+                    <submit>ENTER</submit>
+                    <cancel>unas</cancel>
+                </navigationkeys>
+            </field>
+        </fields>
+    </screen>
+    <screen>
+        <name>trolley number</name>
+        <screenidentifiers>
+            <screenidentifier>
+                <value>trolley: T</value>
+            </screenidentifier>
+        </screenidentifiers>
+        <fields>
+            <field>
+                <name>trolley number</name>
+                <label>
+                    <value>trolley:</value>
+                </label>
+                <navigationkeys>
+                    <submit>ENTER</submit>
+                    <cancel>/</cancel>
+                </navigationkeys>
+            </field>
+        </fields>
+    </screen>
+    <screen>
+        <name>trolley number</name>
+        <screenidentifiers>
+            <screenidentifier>
+                <value>trolley: .</value>
+            </screenidentifier>
+        </screenidentifiers>
+        <fields>
+            <field>
+                <name>trolley number</name>
+                <label>
+                    <value>trolley:</value>
+                </label>
+                <navigationkeys>
+                    <submit>ENTER</submit>
+                    <cancel>/</cancel>
+                </navigationkeys>
+            </field>
+        </fields>
+    </screen>
+    <screen>
+        <name>trolley number</name>
+        <screenidentifiers>
+            <screenidentifier>
+                <value>trolley: t</value>
+            </screenidentifier>
+        </screenidentifiers>
+        <fields>
+            <field>
+                <name>trolley number</name>
+                <label>
+                    <value>trolley:</value>
+                </label>
+                <navigationkeys>
+                    <submit>ENTER</submit>
+                    <cancel>/</cancel>
+                </navigationkeys>
+            </field>
+        </fields>
+    </screen>
+    <screen>
+        <name>trolley number</name>
+        <screenidentifiers>
+            <screenidentifier>
+                <value>trolley: T</value>
+            </screenidentifier>
+        </screenidentifiers>
+        <fields>
+            <field>
+                <name>trolley number</name>
+                <label>
+                    <value>trolley:</value>
+                </label>
+                <navigationkeys>
+                    <submit>ENTER</submit>
+                    <cancel>/</cancel>
+                </navigationkeys>
+            </field>
+        </fields>
+    </screen>
+    <screen>
+        <name>trolley number</name>
+        <screenidentifiers>
+            <screenidentifier>
+                <value>trolley:</value>
+            </screenidentifier>
+        </screenidentifiers>
+        <fields>
+            <field>
+                <name>trolley number</name>
+                <label>
+                    <value>trolley:</value>
+                </label>
+                <navigationkeys>
+                    <submit>ENTER</submit>
+                    <cancel>/</cancel>
+                </navigationkeys>
+            </field>
+        </fields>
+    </screen>
+</screens>
